@@ -52,6 +52,7 @@
         <copy todir="${deploy.path}/${name}" preservelastmodified="true">
             <fileset dir="${web.dir}">
                 <include name="**/*.*"/>
+            	<exclude name="**/servlet-api.jar"/>
             </fileset>
         </copy>
     </target>
@@ -61,6 +62,7 @@
              webxml="${web.dir}/WEB-INF/web.xml">
             <fileset dir="${web.dir}">
                 <include name="**/*.*"/>
+            	<exclude name="**/servlet-api.jar"/>
             </fileset>
         </war>
         <copy todir="${deploy.path}" preservelastmodified="true">
@@ -96,7 +98,7 @@
 
 
     <target name="install" description="Deploy application on Tomcat">
-        <install url="${tomcat.manager.url}"
+        <install url="${tomcat.manager.url}/text"
                  username="${tomcat.manager.username}"
                  password="${tomcat.manager.password}"
                  path="/${name}"
@@ -104,21 +106,21 @@
     </target>
 
     <target name="reload" description="Reload application in Tomcat">
-        <reload url="${tomcat.manager.url}"
+        <reload url="${tomcat.manager.url}/text"
                  username="${tomcat.manager.username}"
                  password="${tomcat.manager.password}"
                  path="/${name}"/>
     </target>
 
     <target name="start" description="Start Tomcat application">
-        <start url="${tomcat.manager.url}"
+        <start url="${tomcat.manager.url}/text"
                  username="${tomcat.manager.username}"
                  password="${tomcat.manager.password}"
                  path="/${name}"/>
     </target>
 
     <target name="stop" description="Stop Tomcat application">
-        <stop url="${tomcat.manager.url}"
+        <stop url="${tomcat.manager.url}/text"
                  username="${tomcat.manager.username}"
                  password="${tomcat.manager.password}"
                  path="/${name}"/>
