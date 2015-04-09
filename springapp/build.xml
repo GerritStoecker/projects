@@ -36,6 +36,8 @@
         <echo message="start     --> Start Tomcat application"/>
         <echo message="stop      --> Stop Tomcat application"/>
         <echo message="list      --> List Tomcat applications"/>
+    	<echo message="clean     --> Clean output directories"/>
+        <echo message="undeploy  --> Un-Deploy application"/>
         <echo message=""/>
     </target>
 
@@ -71,7 +73,23 @@
             </fileset>
         </copy>
     </target>
-    
+
+	<target name="clean" description="Clean output directories">
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="undeploy" description="Un-Deploy application">
+        <delete>
+            <fileset dir="${deploy.path}/${name}">
+                <include name="**/*.*"/>
+            </fileset>
+        </delete>
+    </target>    
+	
 <!-- ============================================================== -->
 <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
 <!-- ============================================================== -->
