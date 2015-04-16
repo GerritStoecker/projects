@@ -3,10 +3,14 @@ package com.gontuseries.studentadmissioncontroller;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 
 public class Student {
 
 	private String studentName;
+	
+	@Size(min=2, max=5)
 	private String studentHobby;
 	
 	private Long studentMobile;

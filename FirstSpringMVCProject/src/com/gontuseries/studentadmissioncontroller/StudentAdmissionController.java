@@ -3,6 +3,8 @@ package com.gontuseries.studentadmissioncontroller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,7 +62,7 @@ public class StudentAdmissionController {
 //	}
 
 	@RequestMapping(value="/submitAdmissionForm.html", method = RequestMethod.POST)
-	public ModelAndView submitAdmissionForm(@ModelAttribute("student1") Student student1, BindingResult result) {
+	public ModelAndView submitAdmissionForm( @Valid @ModelAttribute("student1") Student student1, BindingResult result) {
 
 		if(result.hasErrors()) {
 			ModelAndView model = new ModelAndView("AdmissionForm");
